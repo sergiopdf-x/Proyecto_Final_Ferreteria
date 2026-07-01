@@ -1,0 +1,38 @@
+CREATE DATABASE ferreteria_db;
+
+-- 1. Tabla de Usuarios
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    rol VARCHAR(20) NOT NULL CHECK (rol IN ('ADMIN', 'CAJERO', 'REPORTES'))
+);
+
+-- 2. Tabla del Recurso Principal: Inventario de Ferretería
+CREATE TABLE productos_ferreteria (
+    id SERIAL PRIMARY KEY,
+    codigo_barra VARCHAR(50) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(50),
+    precio DECIMAL(10, 2) NOT NULL CHECK (precio > 0),
+    stock INTEGER NOT NULL CHECK (stock >= 0)
+);
+
+-- 3. Tabla de Relación: Ventas
+CREATE TABLE ventas_ferreteria (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER NOT NULL,
+    producto_id INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL CHECK (cantidad > 0),
+    total DECIMAL(10, 2) NOT NULL CHECK (total > 0),
+    fecha_venta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE RESTRICT,
+    FOREIGN KEY (producto_id) REFERENCES productos_ferreteria(id) ON DELETE RESTRICT
+);
+
+-- Inserción de usuarios obligatorios para pruebas
+INSERT INTO usuarios (nombre, correo, contrasena, rol) VALUES
+('Sergio Toapanta', 'admin@ferreteria.com', 'admin123', 'ADMIN'),
+('Cristhian Veliz', 'cajero@ferreteria.com', 'cajero123', 'CAJERO'),
+('Lorena Auditora', 'reportes@ferreteria.com', 'report123', 'REPORTES');
