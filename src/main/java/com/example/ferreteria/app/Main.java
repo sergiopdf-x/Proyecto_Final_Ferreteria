@@ -1,12 +1,24 @@
 package com.example.ferreteria.app;
 
+import com.example.ferreteria.db.Conexion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+
 public class Main extends Application {
+    Connection con = Conexion.getConexion();
+
+    {
+        if (con != null) {
+            System.out.println("Base de datos y conexión vinculadas correctamente.");
+            // Cerramos de una vez para la prueba
+            Conexion.cerrarConexion();
+        }
+    }
 
     @Override
     public void start(Stage primaryStage){
@@ -24,5 +36,9 @@ public class Main extends Application {
             System.out.println("Error al iniciar la aplicacion: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public Connection getCon() {
+        return con;
     }
 }
