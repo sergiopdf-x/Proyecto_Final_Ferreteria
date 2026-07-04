@@ -2,19 +2,23 @@ package com.example.ferreteria.model;
 
 public class Producto {
     private int id;
-    private String nombreProducto;
+    private String codigoBarra;
+    private String nombre;
+    private String marca;
+    private double precio;
     private int stock;
-    private double precioVenta;
 
     public Producto(){
 
     }
 
-    public Producto(int id, String nombreProducto, int stock, double precioVenta) {
+    public Producto(int id, String codigoBarra, String nombre, String marca, double precio, int stock) {
         this.id = id;
-        this.nombreProducto = nombreProducto;
+        this.codigoBarra = codigoBarra;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.precio = precio;
         this.stock = stock;
-        this.precioVenta = precioVenta;
     }
 
     public int getId() {
@@ -25,12 +29,36 @@ public class Producto {
         this.id = id;
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    public String getCodigoBarra() {
+        return codigoBarra;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setCodigoBarra(String codigoBarra) {
+        this.codigoBarra = codigoBarra;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public int getStock() {
@@ -39,13 +67,5 @@ public class Producto {
 
     public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    public double getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(double precioVenta) {
-        this.precioVenta = precioVenta;
     }
 }

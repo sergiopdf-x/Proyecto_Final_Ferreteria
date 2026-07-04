@@ -57,10 +57,10 @@ public class LoginController {
         }
 
         if (usuario.equals("admin@poli.com") && contra.equals("admin123")) {
-            alerta("Exito", "Validaciones aprobadas. Bienvenido Administrador", Alert.AlertType.INFORMATION);
+            alerta("Exito", "Validaciones aprobadas. Bienvenido ADMIN", Alert.AlertType.INFORMATION);
             navegarEntreFormularios("/com/example/ferreteria/dashboard.fxml", "Dashboard Principal");
         } else if (usuario.equals("bodega@poli.com") && contra.equals("bodega123")) {
-            alerta("Exito", "Bienvenido bodeguero", Alert.AlertType.INFORMATION);
+            alerta("Exito", "Bienvenido CAJERO", Alert.AlertType.INFORMATION);
             navegarEntreFormularios("/com/example/ferreteria/productos.fxml", "Gestion de Inventario");
         } else {
             alerta("Error", "Credenciales Incorrectas", Alert.AlertType.ERROR);
