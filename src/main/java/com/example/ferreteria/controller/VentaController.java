@@ -61,7 +61,7 @@ public class VentaController {
 
     private void cargarProductos() {
         try {
-            var productos = productoDao.listarTodo();
+            java.util.List<Producto> productos = productoDao.listarTodo();
             productosPorId.clear();
             productos.forEach(p -> productosPorId.put(p.getId(), p));
             cbProducto.setItems(FXCollections.observableArrayList(productos));

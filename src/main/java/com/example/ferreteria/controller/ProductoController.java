@@ -69,7 +69,7 @@ public class ProductoController {
     }
 
     private boolean validarCampos() {
-        if (txtCodigo.getText().isBlank() || txtNombre.getText().isBlank()) {
+        if (txtCodigo.getText().isEmpty() || txtNombre.getText().isEmpty()) {
             alerta("Campos vacios", "Codigo y nombre son obligatorios", Alert.AlertType.WARNING);
             return false;
         }

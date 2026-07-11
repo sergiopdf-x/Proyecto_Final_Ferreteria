@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.ferreteria.controller.DashboardController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="750.0">
 
-</AnchorPane>
+    <top>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color:#2c3e50; -fx-padding:12;">
+            <Label fx:id="lblBienvenida" style="-fx-text-fill:white; -fx-font-size:16; -fx-font-weight:bold;" text="Bienvenido"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" prefWidth="180" style="-fx-padding:15; -fx-background-color:#34495e;">
+            <Button fx:id="btnProductos" maxWidth="Infinity" onAction="#irAProductos" text="Inventario"/>
+            <Button fx:id="btnVentas" maxWidth="Infinity" onAction="#irAVentas" text="Ventas"/>
+            <Button fx:id="btnReportes" maxWidth="Infinity" onAction="#irAReportes" text="Reportes"/>
+            <Separator/>
+            <Button maxWidth="Infinity" onAction="#cerrarSesion" style="-fx-background-color:#c0392b; -fx-text-fill:white;" text="Cerrar sesion"/>
+        </VBox>
+    </left>
+
+    <center>
+        <Label style="-fx-font-size:14; -fx-padding:20;" text="Seleccione una opcion del menu"/>
+    </center>
+
+</BorderPane>

@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.ferreteria.controller.ProductoController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="750.0">
 
-</AnchorPane>
+    <top>
+        <Label style="-fx-font-size:18; -fx-font-weight:bold; -fx-padding:10;" text="Gestion de Inventario"/>
+    </top>
+
+    <left>
+        <VBox spacing="8" prefWidth="260" style="-fx-padding:15;">
+            <Label text="Codigo de barra"/>
+            <TextField fx:id="txtCodigo"/>
+            <Label text="Nombre"/>
+            <TextField fx:id="txtNombre"/>
+            <Label text="Marca"/>
+            <TextField fx:id="txtMarca"/>
+            <Label text="Precio"/>
+            <TextField fx:id="txtPrecio"/>
+            <Label text="Stock"/>
+            <TextField fx:id="txtStock"/>
+
+            <HBox spacing="8">
+                <Button onAction="#registrarProducto" text="Guardar"/>
+                <Button onAction="#modificarProducto" text="Modificar"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button onAction="#eliminarProducto" text="Eliminar"/>
+                <Button onAction="#limpiarCampos" text="Limpiar"/>
+            </HBox>
+            <Button onAction="#volverDashboard" text="Volver al menu"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView fx:id="tablaProductos">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+                <TableColumn fx:id="colCodigo" text="Codigo" prefWidth="90"/>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
+                <TableColumn fx:id="colMarca" text="Marca" prefWidth="100"/>
+                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="80"/>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="70"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
