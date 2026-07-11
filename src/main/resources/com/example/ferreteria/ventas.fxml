@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ferreteria.controller.VentaController"
+            prefHeight="500.0" prefWidth="750.0">
+
+    <top>
+        <Label style="-fx-font-size:18; -fx-font-weight:bold; -fx-padding:10;" text="Registro de Ventas"/>
+    </top>
+
+    <left>
+        <VBox spacing="8" prefWidth="260" style="-fx-padding:15;">
+            <Label text="Producto"/>
+            <ComboBox fx:id="cbProducto" maxWidth="Infinity"/>
+            <Label text="Cantidad"/>
+            <TextField fx:id="txtCantidad"/>
+            <Label fx:id="lblTotal" text="Total: $0.00"/>
+            <Button onAction="#registrarVenta" text="Registrar venta"/>
+            <Button onAction="#volverDashboard" text="Volver al menu"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView fx:id="tablaVentas">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+                <TableColumn fx:id="colProducto" text="Producto" prefWidth="180"/>
+                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
+                <TableColumn fx:id="colTotal" text="Total" prefWidth="90"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
