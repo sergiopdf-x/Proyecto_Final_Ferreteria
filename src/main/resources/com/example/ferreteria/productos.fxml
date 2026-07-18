@@ -3,51 +3,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ferreteria.controller.ProductoController"
-            prefHeight="500.0" prefWidth="750.0">
+<BorderPane prefHeight="500.0" prefWidth="750.0" styleClass="app" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ferreteria.controller.ProductoController">
 
     <top>
-        <Label style="-fx-font-size:18; -fx-font-weight:bold; -fx-padding:10;" text="Gestion de Inventario"/>
+        <Label styleClass="seccion-titulo" stylesheets="@estilos/estilos.css" text="Gestion de Inventario" />
     </top>
 
     <left>
-        <VBox spacing="8" prefWidth="260" style="-fx-padding:15;">
-            <Label text="Codigo de barra"/>
-            <TextField fx:id="txtCodigo"/>
-            <Label text="Nombre"/>
-            <TextField fx:id="txtNombre"/>
-            <Label text="Marca"/>
-            <TextField fx:id="txtMarca"/>
-            <Label text="Precio"/>
-            <TextField fx:id="txtPrecio"/>
-            <Label text="Stock"/>
-            <TextField fx:id="txtStock"/>
+        <VBox prefWidth="260" spacing="10" style="-fx-padding: 0 12 12 18;">
+            <VBox spacing="8" styleClass="form-panel">
+                <Label styleClass="formulario-label" text="Codigo de barra" />
+                <TextField fx:id="txtCodigo" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Label styleClass="formulario-label" text="Nombre" />
+                <TextField fx:id="txtNombre" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Label styleClass="formulario-label" text="Marca" />
+                <TextField fx:id="txtMarca" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Label styleClass="formulario-label" text="Precio" />
+                <TextField fx:id="txtPrecio" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Label styleClass="formulario-label" text="Stock" />
+                <TextField fx:id="txtStock" styleClass="campos-txt" />
 
-            <HBox spacing="8">
-                <Button onAction="#registrarProducto" text="Guardar"/>
-                <Button onAction="#modificarProducto" text="Modificar"/>
-            </HBox>
-            <HBox spacing="8">
-                <Button onAction="#eliminarProducto" text="Eliminar"/>
-                <Button onAction="#limpiarCampos" text="Limpiar"/>
-            </HBox>
-            <Button onAction="#volverDashboard" text="Volver al menu"/>
+                <HBox spacing="8">
+                    <Button onAction="#registrarProducto" styleClass="boton-guardar" stylesheets="@estilos/estilos.css" text="Guardar" />
+                    <Button onAction="#modificarProducto" styleClass="boton-modificar" stylesheets="@estilos/estilos.css" text="Modificar" />
+                </HBox>
+                <HBox spacing="8">
+                    <Button onAction="#eliminarProducto" styleClass="boton-eliminar" stylesheets="@estilos/estilos.css" text="Eliminar" />
+                    <Button onAction="#limpiarCampos" styleClass="boton-limpiar" stylesheets="@estilos/estilos.css" text="Limpiar" />
+                </HBox>
+                <Button maxWidth="Infinity" onAction="#volverDashboard" styleClass="boton-volver" text="Volver al menu" />
+            </VBox>
         </VBox>
     </left>
 
     <center>
-        <TableView fx:id="tablaProductos">
-            <columns>
-                <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
-                <TableColumn fx:id="colCodigo" text="Codigo" prefWidth="90"/>
-                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150"/>
-                <TableColumn fx:id="colMarca" text="Marca" prefWidth="100"/>
-                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="80"/>
-                <TableColumn fx:id="colStock" text="Stock" prefWidth="70"/>
-            </columns>
-        </TableView>
+        <VBox style="-fx-padding: 0 18 18 0;">
+            <TableView fx:id="tablaProductos" styleClass="tabla-view" stylesheets="@estilos/estilos.css" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" prefWidth="40" text="ID" />
+                    <TableColumn fx:id="colCodigo" prefWidth="90" text="Codigo" />
+                    <TableColumn fx:id="colNombre" prefWidth="150" text="Nombre" />
+                    <TableColumn fx:id="colMarca" prefWidth="100" text="Marca" />
+                    <TableColumn fx:id="colPrecio" prefWidth="80" text="Precio" />
+                    <TableColumn fx:id="colStock" prefWidth="70" text="Stock" />
+                </columns>
+            </TableView>
+        </VBox>
     </center>
 
 </BorderPane>

@@ -9,7 +9,7 @@ public class Conexion {
 
     private final String URL = "jdbc:postgresql://localhost:5432/ferreteria_db";
     private final String usuario= "postgres";
-    private final String contrasenia = "postgres";
+    private final String contrasenia = "123456";
 
     private Conexion() {
         try {

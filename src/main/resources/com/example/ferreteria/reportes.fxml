@@ -3,32 +3,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ferreteria.controller.ReportesController"
-            prefHeight="500.0" prefWidth="750.0">
+<BorderPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ferreteria.controller.ReportesController">
 
     <top>
         <VBox spacing="5" style="-fx-padding:10;">
-            <Label style="-fx-font-size:18; -fx-font-weight:bold;" text="Reporte de Ventas"/>
-            <Label fx:id="lblTotalVendido" style="-fx-font-size:14;" text="Total vendido: $0.00"/>
+            <Label style="-fx-padding: 0;" styleClass="seccion-titulo" stylesheets="@estilos/estilos.css" text="Reporte de Ventas" />
+            <Label fx:id="lblTotalVendido" styleClass="formulario-total" stylesheets="@estilos/estilos.css" text="Total vendido: $0.00" />
         </VBox>
     </top>
 
     <center>
-        <TableView fx:id="tablaReporte">
-            <columns>
-                <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
-                <TableColumn fx:id="colProducto" text="Producto" prefWidth="180"/>
-                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
-                <TableColumn fx:id="colTotal" text="Total" prefWidth="90"/>
-                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
-            </columns>
-        </TableView>
+        <VBox style="-fx-padding: 0 20 10 20;">
+            <TableView fx:id="tablaReporte" styleClass="tabla-view" stylesheets="@estilos/estilos.css" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" prefWidth="40" text="ID" />
+                    <TableColumn fx:id="colProducto" prefWidth="180" text="Producto" />
+                    <TableColumn fx:id="colCantidad" prefWidth="80" text="Cantidad" />
+                    <TableColumn fx:id="colTotal" prefWidth="90" text="Total" />
+                    <TableColumn fx:id="colFecha" prefWidth="150" text="Fecha" />
+                </columns>
+            </TableView>
+        </VBox>
     </center>
 
     <bottom>
-        <Button style="-fx-padding:10;" onAction="#volverDashboard" text="Volver al menu"/>
+        <HBox alignment="CENTER" style="-fx-padding: 0 0 16 0;">
+            <Button onAction="#volverDashboard" styleClass="boton-volver" stylesheets="@estilos/estilos.css" text="Volver al menu" />
+        </HBox>
     </bottom>
 
 </BorderPane>

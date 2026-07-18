@@ -3,37 +3,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ferreteria.controller.VentaController"
-            prefHeight="500.0" prefWidth="750.0">
+<BorderPane prefHeight="500.0" prefWidth="750.0" styleClass="app" stylesheets="@estilos/estilos.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ferreteria.controller.VentaController">
 
     <top>
-        <Label style="-fx-font-size:18; -fx-font-weight:bold; -fx-padding:10;" text="Registro de Ventas"/>
+        <Label styleClass="seccion-titulo" stylesheets="@estilos/estilos.css" text="Registro de Ventas" />
     </top>
 
     <left>
-        <VBox spacing="8" prefWidth="260" style="-fx-padding:15;">
-            <Label text="Producto"/>
-            <ComboBox fx:id="cbProducto" maxWidth="Infinity"/>
-            <Label text="Cantidad"/>
-            <TextField fx:id="txtCantidad"/>
-            <Label fx:id="lblTotal" text="Total: $0.00"/>
-            <Button onAction="#registrarVenta" text="Registrar venta"/>
-            <Button onAction="#volverDashboard" text="Volver al menu"/>
+        <VBox prefWidth="260" spacing="10" style="-fx-padding: 0 12 12 18;">
+            <VBox spacing="8" styleClass="form-panel">
+                <Label styleClass="formulario-label" stylesheets="@estilos/estilos.css" text="Producto" />
+                <ComboBox fx:id="cbProducto" maxWidth="Infinity" styleClass="combo-box" stylesheets="@estilos/estilos.css" />
+                <Label styleClass="formulario-label" stylesheets="@estilos/estilos.css" text="Cantidad" />
+                <TextField fx:id="txtCantidad" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Label fx:id="lblTotal" styleClass="formulario-total" stylesheets="@estilos/estilos.css" text="Total: $0.00" />
+                <Button maxWidth="Infinity" onAction="#registrarVenta" styleClass="boton-guardar" stylesheets="@estilos/estilos.css" text="Registrar venta" />
+                <Button maxWidth="Infinity" onAction="#volverDashboard" styleClass="boton-volver" stylesheets="@estilos/estilos.css" text="Volver al menu" />
+            </VBox>
         </VBox>
     </left>
 
     <center>
-        <TableView fx:id="tablaVentas">
-            <columns>
-                <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
-                <TableColumn fx:id="colProducto" text="Producto" prefWidth="180"/>
-                <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="80"/>
-                <TableColumn fx:id="colTotal" text="Total" prefWidth="90"/>
-                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
-            </columns>
-        </TableView>
+        <VBox style="-fx-padding: 0 18 18 0;">
+            <TableView fx:id="tablaVentas" styleClass="tabla-view" stylesheets="@estilos/estilos.css" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" prefWidth="40" text="ID" />
+                    <TableColumn fx:id="colProducto" prefWidth="180" text="Producto" />
+                    <TableColumn fx:id="colCantidad" prefWidth="80" text="Cantidad" />
+                    <TableColumn fx:id="colTotal" prefWidth="90" text="Total" />
+                    <TableColumn fx:id="colFecha" prefWidth="150" text="Fecha" />
+                </columns>
+            </TableView>
+        </VBox>
     </center>
 
 </BorderPane>
