@@ -40,17 +40,24 @@ public class ProductoDao implements ICRUD {
 
     @Override
     public boolean eliminar(Producto p) throws Exception {
-        String sql = "DELETE FROM productos_ferreteria WHERE id=?";
-        try (PreparedStatement ps = Conexion.getConexion().prepareStatement(sql)) {
-            ps.setInt(1, p.getId());
-            return ps.executeUpdate() > 0;
+        String sqlVentas = "DELETE FROM ventas_ferreteria WHERE producto_id = ?";
+        try (PreparedStatement psVentas =
+                     Conexion.getConexion().prepareStatement(sqlVentas)) {
+            psVentas.setInt(1, p.getId());
+            psVentas.executeUpdate();
+        }
+        String sqlProducto = "DELETE FROM productos_ferreteria WHERE id = ?";
+        try (PreparedStatement psProducto =
+                     Conexion.getConexion().prepareStatement(sqlProducto)) {
+            psProducto.setInt(1, p.getId());
+            return psProducto.executeUpdate() > 0;
         }
     }
 
     @Override
     public List<Producto> listarTodo() throws Exception {
         List<Producto> lista = new ArrayList<>();
-        String sql = "SELECT * FROM productos_ferreteria ORDER BY id";
+        String sql = "SELECT * FROM productos_ferreteria WHERE activo = TRUE ORDER BY id";
         try (Statement st = Conexion.getConexion().createStatement();
              ResultSet rs = st.executeQuery(sql)) {
             while (rs.next()) {

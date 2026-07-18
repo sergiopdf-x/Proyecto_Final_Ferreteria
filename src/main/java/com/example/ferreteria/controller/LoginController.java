@@ -1,5 +1,8 @@
 package com.example.ferreteria.controller;
 
+import com.example.ferreteria.dao.UsuarioDao;
+import com.example.ferreteria.model.Sesion;
+import com.example.ferreteria.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -56,14 +59,21 @@ public class LoginController {
             return;
         }
 
-        if (usuario.equals("admin@poli.com") && contra.equals("admin123")) {
-            alerta("Exito", "Validaciones aprobadas. Bienvenido ADMIN", Alert.AlertType.INFORMATION);
-            navegarEntreFormularios("/com/example/ferreteria/dashboard.fxml", "Dashboard Principal");
-        } else if (usuario.equals("bodega@poli.com") && contra.equals("bodega123")) {
-            alerta("Exito", "Bienvenido CAJERO", Alert.AlertType.INFORMATION);
-            navegarEntreFormularios("/com/example/ferreteria/productos.fxml", "Gestion de Inventario");
-        } else {
-            alerta("Error", "Credenciales Incorrectas", Alert.AlertType.ERROR);
+        try{
+            UsuarioDao usuarioDao = new UsuarioDao();
+            Usuario usr = usuarioDao.autenticar(usuario,contra);
+
+            if(usuario == null){
+                alerta("Error","Credenciales incorrectas", Alert.AlertType.ERROR);
+                return;
+            }
+
+            Sesion.setUsuarioActual(usr);
+            alerta("Exito","Bienvenido " + usr.getNombre() + "( " + usr.getRol() + " )", Alert.AlertType.INFORMATION);
+            navegarEntreFormularios("/com/example/ferreteria/dashboard.fxml","Dashboard Principal");
+        } catch (Exception e) {
+            alerta("Error de conexion","No es posible validar el usuario" + e.getMessage(), Alert.AlertType.ERROR);
+            e.printStackTrace();
         }
     }
 }

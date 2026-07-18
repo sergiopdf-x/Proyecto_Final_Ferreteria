@@ -1,7 +1,6 @@
 package com.example.ferreteria.model;
 
-public class Producto {
-    private int id;
+public class Producto extends EntidadBase {
     private String codigoBarra;
     private String nombre;
     private String marca;
@@ -13,20 +12,12 @@ public class Producto {
     }
 
     public Producto(int id, String codigoBarra, String nombre, String marca, double precio, int stock) {
-        this.id = id;
+        super(id);
         this.codigoBarra = codigoBarra;
         this.nombre = nombre;
         this.marca = marca;
         this.precio = precio;
         this.stock = stock;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCodigoBarra() {
@@ -67,5 +58,10 @@ public class Producto {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " - $" + String.format("%.2f", precio);
     }
 }

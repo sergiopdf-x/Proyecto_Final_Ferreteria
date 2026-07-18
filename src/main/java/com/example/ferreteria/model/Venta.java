@@ -2,8 +2,7 @@ package com.example.ferreteria.model;
 
 import java.time.LocalDateTime;
 
-public class Venta {
-    private int id;
+public class Venta extends EntidadBase {
     private int usuarioId;
     private int productoId;
     private int cantidad;
@@ -15,20 +14,12 @@ public class Venta {
     }
 
     public Venta(int id, int usuarioId, int productoId, int cantidad, double total, LocalDateTime fechaVenta) {
-        this.id = id;
+        super(id);
         this.usuarioId = usuarioId;
         this.productoId = productoId;
         this.cantidad = cantidad;
         this.total = total;
         this.fechaVenta = fechaVenta;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getUsuarioId() {
