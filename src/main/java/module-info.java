@@ -5,9 +5,9 @@ module com.example.ferreteria {
 
     opens com.example.ferreteria to javafx.fxml;
     opens com.example.ferreteria.controller to javafx.fxml;
-    opens com.example.ferreteria.app to javafx.graphics;
 
     exports com.example.ferreteria.app;
     exports com.example.ferreteria.controller;
     exports com.example.ferreteria.model;
+    opens com.example.ferreteria.app to javafx.fxml, javafx.graphics;
 }
