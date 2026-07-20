@@ -7,10 +7,9 @@ public class Conexion {
     private static Conexion instancia;
     private Connection connection;
 
-    private final String URL = "jdbc:postgresql://localhost:5432/ferreteria_db";
-    private final String usuario= "postgres";
-    private final String contrasenia = "123456";
-
+    private final String URL = "jdbc:postgresql://ep-shiny-mud-aw1uad99.c-12.us-east-1.aws.neon.tech/neondb?sslmode=require";
+    private final String usuario = "neondb_owner";
+    private final String contrasenia = "npg_LHWJ52syhYdb";
     private Conexion() {
         try {
             Class.forName("org.postgresql.Driver");

@@ -10,13 +10,10 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 
 public class Main extends Application {
-    Connection con = Conexion.getConexion();
-
+    java.sql.Connection con = com.example.ferreteria.db.Conexion.getConexion();
     {
         if (con != null) {
             System.out.println("Base de datos y conexión vinculadas correctamente.");
-            // Cerramos de una vez para la prueba
-            Conexion.cerrarConexion();
         }
     }
 
