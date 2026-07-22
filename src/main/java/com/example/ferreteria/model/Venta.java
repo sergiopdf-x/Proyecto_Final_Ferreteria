@@ -8,6 +8,8 @@ public class Venta extends EntidadBase {
     private int cantidad;
     private double total;
     private LocalDateTime fechaVenta;
+    private String clienteNombre;
+    private String clienteCedula;
 
     public Venta(){
 
@@ -20,6 +22,34 @@ public class Venta extends EntidadBase {
         this.cantidad = cantidad;
         this.total = total;
         this.fechaVenta = fechaVenta;
+    }
+
+    public Venta(int id, int usuarioId, int productoId, int cantidad, double total, LocalDateTime fechaVenta,
+                 String clienteNombre, String clienteCedula) {
+        super(id);
+        this.usuarioId = usuarioId;
+        this.productoId = productoId;
+        this.cantidad = cantidad;
+        this.total = total;
+        this.fechaVenta = fechaVenta;
+        this.clienteNombre = clienteNombre;
+        this.clienteCedula = clienteCedula;
+    }
+
+    public String getClienteNombre() {
+        return clienteNombre;
+    }
+
+    public void setClienteNombre(String clienteNombre) {
+        this.clienteNombre = clienteNombre;
+    }
+
+    public String getClienteCedula() {
+        return clienteCedula;
+    }
+
+    public void setClienteCedula(String clienteCedula) {
+        this.clienteCedula = clienteCedula;
     }
 
     public int getUsuarioId() {

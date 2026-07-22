@@ -12,12 +12,14 @@ import java.util.List;
 public class VentaDao {
 
     public boolean registrar(Venta v) throws Exception {
-        String sql = "INSERT INTO ventas_ferreteria (usuario_id, producto_id, cantidad, total) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO ventas_ferreteria (usuario_id, producto_id, cantidad, total, cliente_nombre, cliente_cedula) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = Conexion.getConexion().prepareStatement(sql)) {
             ps.setInt(1, v.getUsuarioId());
             ps.setInt(2, v.getProductoId());
             ps.setInt(3, v.getCantidad());
             ps.setDouble(4, v.getTotal());
+            ps.setString(5, v.getClienteNombre());
+            ps.setString(6, v.getClienteCedula());
             return ps.executeUpdate() > 0;
         }
     }
@@ -34,7 +36,9 @@ public class VentaDao {
                         rs.getInt("producto_id"),
                         rs.getInt("cantidad"),
                         rs.getDouble("total"),
-                        rs.getTimestamp("fecha_venta").toLocalDateTime()
+                        rs.getTimestamp("fecha_venta").toLocalDateTime(),
+                        rs.getString("cliente_nombre"),
+                        rs.getString("cliente_cedula")
                 ));
             }
         }

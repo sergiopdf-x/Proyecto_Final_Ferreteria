@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 
 import java.sql.Connection;
 
-import static javafx.application.Application.launch;
-
 public class Main extends Application {
     java.sql.Connection con = com.example.ferreteria.db.Conexion.getConexion();
     {

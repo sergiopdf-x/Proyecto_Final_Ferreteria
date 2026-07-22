@@ -12,6 +12,10 @@
     <left>
         <VBox prefWidth="260" spacing="10" style="-fx-padding: 0 12 12 18;">
             <VBox spacing="8" styleClass="form-panel">
+                <Label styleClass="formulario-label" stylesheets="@estilos/estilos.css" text="Datos del cliente " />
+                <TextField fx:id="txtClienteNombre" promptText="Nombre completo" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <TextField fx:id="txtClienteCedula" promptText="Cedula / RUC" styleClass="campos-txt" stylesheets="@estilos/estilos.css" />
+                <Separator />
                 <Label styleClass="formulario-label" stylesheets="@estilos/estilos.css" text="Producto" />
                 <ComboBox fx:id="cbProducto" maxWidth="Infinity" styleClass="combo-box" stylesheets="@estilos/estilos.css" />
                 <Label styleClass="formulario-label" stylesheets="@estilos/estilos.css" text="Cantidad" />
@@ -28,10 +32,11 @@
             <TableView fx:id="tablaVentas" styleClass="tabla-view" stylesheets="@estilos/estilos.css" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="colId" prefWidth="40" text="ID" />
-                    <TableColumn fx:id="colProducto" prefWidth="180" text="Producto" />
-                    <TableColumn fx:id="colCantidad" prefWidth="80" text="Cantidad" />
-                    <TableColumn fx:id="colTotal" prefWidth="90" text="Total" />
-                    <TableColumn fx:id="colFecha" prefWidth="150" text="Fecha" />
+                    <TableColumn fx:id="colCliente" prefWidth="150" text="Cliente" />
+                    <TableColumn fx:id="colProducto" prefWidth="150" text="Producto" />
+                    <TableColumn fx:id="colCantidad" prefWidth="70" text="Cantidad" />
+                    <TableColumn fx:id="colTotal" prefWidth="80" text="Total" />
+                    <TableColumn fx:id="colFecha" prefWidth="140" text="Fecha" />
                 </columns>
             </TableView>
         </VBox>

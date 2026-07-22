@@ -23,11 +23,14 @@ import java.util.Map;
 
 public class VentaController {
 
+    @FXML private TextField txtClienteNombre;
+    @FXML private TextField txtClienteCedula;
     @FXML private ComboBox<Producto> cbProducto;
     @FXML private TextField txtCantidad;
     @FXML private Label lblTotal;
     @FXML private TableView<Venta> tablaVentas;
     @FXML private TableColumn<Venta, Integer> colId;
+    @FXML private TableColumn<Venta, String> colCliente;
     @FXML private TableColumn<Venta, String> colProducto;
     @FXML private TableColumn<Venta, Integer> colCantidad;
     @FXML private TableColumn<Venta, Double> colTotal;
@@ -43,6 +46,8 @@ public class VentaController {
         cargarProductos();
 
         colId.setCellValueFactory(d -> new SimpleIntegerProperty(d.getValue().getId()).asObject());
+        colCliente.setCellValueFactory(d -> new SimpleStringProperty(
+                d.getValue().getClienteNombre() != null ? d.getValue().getClienteNombre() : "N/D"));
         colProducto.setCellValueFactory(d -> {
             Producto p = productosPorId.get(d.getValue().getProductoId());
             return new SimpleStringProperty(p != null ? p.getNombre() : "N/D");
@@ -92,6 +97,13 @@ public class VentaController {
 
     @FXML
     private void registrarVenta() {
+        String clienteNombre = txtClienteNombre.getText() == null ? "" : txtClienteNombre.getText().trim();
+        String clienteCedula = txtClienteCedula.getText() == null ? "" : txtClienteCedula.getText().trim();
+        if (clienteNombre.isEmpty() || clienteCedula.isEmpty()) {
+            alerta("Campos vacios", "Ingrese el nombre y la cedula del cliente para la factura", Alert.AlertType.WARNING);
+            return;
+        }
+
         Producto p = cbProducto.getValue();
         if (p == null) {
             alerta("Campos vacios", "Seleccione un producto", Alert.AlertType.WARNING);
@@ -115,17 +127,41 @@ public class VentaController {
 
         try {
             double total = p.getPrecio() * cantidad;
-            Venta venta = new Venta(0, Sesion.getUsuarioActual().getId(), p.getId(), cantidad, total, null);
+            Venta venta = new Venta(0, Sesion.getUsuarioActual().getId(), p.getId(), cantidad, total, null,
+                    clienteNombre, clienteCedula);
             if (ventaDao.registrar(venta)) {
+                // Se descuenta el stock vendido del inventario
                 productoDao.actualizarStock(p.getId(), p.getStock() - cantidad);
-                alerta("Exito", "Venta registrada correctamente", Alert.AlertType.INFORMATION);
+                mostrarFactura(clienteNombre, clienteCedula, p, cantidad, total);
                 txtCantidad.clear();
+                txtClienteNombre.clear();
+                txtClienteCedula.clear();
                 cargarProductos();
                 cargarVentas();
             }
         } catch (Exception e) {
             alerta("Error", "No se pudo registrar la venta: " + e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    private void mostrarFactura(String clienteNombre, String clienteCedula, Producto p, int cantidad, double total) {
+        String factura = "FACTURA DE VENTA\n"
+                + "----------------------------------\n"
+                + "Cliente: " + clienteNombre + "\n"
+                + "Cedula/RUC: " + clienteCedula + "\n"
+                + "Atendido por: " + Sesion.getUsuarioActual().getNombre() + "\n"
+                + "----------------------------------\n"
+                + "Producto: " + p.getNombre() + "\n"
+                + "Cantidad: " + cantidad + "\n"
+                + "Precio unitario: $" + String.format("%.2f", p.getPrecio()) + "\n"
+                + "TOTAL: $" + String.format("%.2f", total) + "\n"
+                + "----------------------------------\n"
+                + "Gracias por su compra.";
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Venta registrada");
+        a.setHeaderText("Factura generada correctamente");
+        a.setContentText(factura);
+        a.showAndWait();
     }
 
     @FXML

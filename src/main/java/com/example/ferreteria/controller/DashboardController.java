@@ -26,15 +26,19 @@ public class DashboardController {
 
         lblBienvenida.setText("Bienvenido, " + usuario.getNombre() + " (" + usuario.getRol() + ")");
 
-        // Restriccion de opciones segun el rol
         switch (usuario.getRol()) {
-            case "CAJERO" -> btnReportes.setDisable(true);
+            case "CAJERO" -> ocultar(btnReportes); //Ocultar los botones para cajero y reportes
             case "REPORTES" -> {
-                btnVentas.setDisable(true);
-                btnProductos.setDisable(true);
+                ocultar(btnVentas);
+                ocultar(btnProductos);
             }
-            default -> { } // ADMIN ve todo
+            default -> { } // ADMIN ve todas las opciones
         }
+    }
+
+    private void ocultar(Button boton) {
+        boton.setVisible(false);
+        boton.setManaged(false);
     }
 
     private void cambiarEscena(String fxml, String titulo, Node origen) {
