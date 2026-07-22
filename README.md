@@ -1,36 +1,71 @@
 # 🛠️ Ferretería "LA POLI" — Sistema de Gestión
 
-Aplicación de escritorio desarrollada en **JavaFX** aplicando Programación Orientada a Objetos, con conexión a una base de datos **PostgreSQL** en la nube (Neon) y control de acceso por roles.
+## 📄 Descripción del proyecto
 
-Permite gestionar el inventario de una ferretería, registrar ventas con descuento automático de stock y consultar reportes del histórico vendido.
+Aplicación de escritorio desarrollada en JavaFX aplicando Programación Orientada a Objetos, con conexión a una base de datos PostgreSQL en la nube (Neon).
 
----
-
-## 📋 Funcionalidades
-
-- **Inicio de sesión** con validación de credenciales contra la base de datos.
-- **Control de acceso por roles**: `ADMIN`, `CAJERO` y `REPORTES`, cada uno con distintas opciones habilitadas en el panel principal.
-- **Gestión de inventario (CRUD)**: registrar, modificar, eliminar y listar productos.
-- **Registro de ventas**: selección de producto, cálculo automático del total y descuento de stock.
-- **Reportes**: historial de ventas y total vendido acumulado.
-- **Validaciones**: campos obligatorios, valores numéricos positivos, confirmación antes de eliminar y control de integridad referencial (no se puede borrar un producto con ventas asociadas).
+El sistema resuelve el control manual de inventario y ventas de una ferretería, permitiendo registrar productos, gestionar el stock, registrar ventas con cálculo automático del total y consultar reportes del histórico vendido. El acceso está restringido según el rol del usuario (Administrador, Cajero o Reportes), de modo que cada uno solo ve las opciones que le corresponden.
 
 ---
 
-## 🧰 Tecnologías utilizadas
+## 👥 Integrantes
 
-| Tecnología | Uso |
+- Sergio Toapanta
+- Cristhian Veliz
+
+Asignatura: Programación Orientada a Objetos
+Docente: Ing. Yadira Gissela Franco Rocha, Mgs.
+Período académico: 2026-A
+
+---
+
+## 🧰 Herramientas usadas
+
+| Herramienta | Uso |
 |---|---|
-| Java 21 | Lenguaje principal |
+| Java 21 | Lenguaje de programación |
 | JavaFX 21 | Interfaz gráfica de escritorio |
-| Maven | Gestión de dependencias y build |
-| PostgreSQL (Neon) | Base de datos en la nube |
-| JDBC | Conexión a la base de datos |
-| CSS | Estilos de la interfaz |
+| Maven | Gestión de dependencias y construcción del proyecto |
+| PostgreSQL (Neon) | Base de datos relacional en la nube |
+| JDBC | Conexión entre la aplicación y la base de datos |
+| CSS | Estilos visuales de la interfaz |
 | Git y GitHub | Control de versiones |
+| IntelliJ IDEA | Entorno de desarrollo |
 
 ---
 
-## 🏗️ Arquitectura del proyecto
+## ▶️ Pasos de instalación
 
-El proyecto está organizado por capas, siguiendo el paquete `com.example.ferreteria`:
+1. Clonar el repositorio:
+   git clone https://github.com/sergiopdf-x/Proyecto_Final_Ferreteria.git
+
+2. Abrir el proyecto en un IDE con soporte para Maven y JavaFX (IntelliJ IDEA, NetBeans o Eclipse).
+
+3. Verificar la conexión a la base de datos en el archivo:
+   src/main/java/com/example/ferreteria/db/Conexion.java
+   (URL, usuario y contraseña de PostgreSQL).
+
+4. Ejecutar el proyecto con Maven:
+   mvn clean javafx:run
+
+5. Alternativa: ejecutar directamente el archivo .jar generado, sin necesidad de abrir el IDE.
+
+6. Iniciar sesión con alguno de los usuarios de prueba:
+
+   | Correo | Contraseña | Rol |
+   |---|---|---|
+   | admin@ferreteria.com | admin123 | ADMIN |
+   | cajero@ferreteria.com | cajero123 | CAJERO |
+   | reportes@ferreteria.com | report123 | REPORTES |
+
+---
+
+## 🖼️ Capturas
+
+| Pantalla | Captura |
+|---|---|
+| Login | _(insertar imagen)_ |
+| Dashboard | _(insertar imagen)_ |
+| Inventario (CRUD) | _(insertar imagen)_ |
+| Ventas | _(insertar imagen)_ |
+| Reportes | _(insertar imagen)_ |
