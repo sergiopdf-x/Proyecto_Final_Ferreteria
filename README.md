@@ -60,12 +60,3 @@ Período académico: 2026-A
 
 ---
 
-## 🖼️ Capturas
-
-| Pantalla | Captura |
-|---|---|
-| Login | _(insertar imagen)_ |
-| Dashboard | _(insertar imagen)_ |
-| Inventario (CRUD) | _(insertar imagen)_ |
-| Ventas | _(insertar imagen)_ |
-| Reportes | _(insertar imagen)_ |
