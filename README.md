@@ -11,6 +11,7 @@ Al abrir la aplicación verás la pantalla de **Login**, donde debes ingresar tu
 Usuarios disponibles:
 
 | Correo | Contraseña | Rol |
+|---|---|---|
 | admin@ferreteria.com | admin123 | ADMIN |
 | cajero@ferreteria.com | cajero123 | CAJERO |
 | reportes@ferreteria.com | report123 | REPORTES |
@@ -112,3 +113,28 @@ Desde cualquier pantalla puedes volver al Dashboard con el botón **Volver al me
 | No me deja registrar la venta | Revisa que llenaste nombre y cédula del cliente, y que la cantidad no supere el stock disponible. |
 | No veo el botón de Reportes | Es normal si tu rol es CAJERO; ese módulo solo lo ve ADMIN y REPORTES. |
 | Error de conexión al iniciar | Verifica tu conexión a internet, ya que la base de datos está alojada en la nube (Neon). |
+
+---
+
+## 8. Capturas de pantalla programa funcional
+
+| Correo | Contraseña | Rol |
+|---|---|---|
+| admin@ferreteria.com | admin123 | ADMIN |
+<img width="332" height="376" alt="image" src="https://github.com/user-attachments/assets/6b6bdeaf-a2d7-479e-b0eb-e30fe8843483" />
+<img width="746" height="530" alt="image" src="https://github.com/user-attachments/assets/3289464f-ab8c-44a1-9a6c-76d61254e8c5" />
+<img width="746" height="543" alt="image" src="https://github.com/user-attachments/assets/a2bce3c2-495f-4380-a1e6-8cc8f06dfad5" />
+<img width="822" height="532" alt="image" src="https://github.com/user-attachments/assets/5e5468f4-a27a-4818-9653-9b100aaa2011" />
+<img width="748" height="529" alt="image" src="https://github.com/user-attachments/assets/61ab8e39-233a-4785-9ab3-2b1d5d69366a" />
+
+| Correo | Contraseña | Rol |
+|---|---|---|
+| cajero@ferreteria.com | cajero123 | CAJERO |
+<img width="332" height="373" alt="image" src="https://github.com/user-attachments/assets/b1f7b9c3-b70b-480c-9e90-22e7b6c6d0bc" />
+<img width="749" height="523" alt="image" src="https://github.com/user-attachments/assets/0fd7df08-4f55-4ba5-bc98-283aa3a4fd4a" />
+
+| Correo | Contraseña | Rol |
+|---|---|---|
+| reportes@ferreteria.com | report123 | REPORTES |
+<img width="336" height="371" alt="image" src="https://github.com/user-attachments/assets/8ee7c387-c38a-493a-8cb7-13ef8e5e90d4" />
+<img width="746" height="528" alt="image" src="https://github.com/user-attachments/assets/dda78b4e-7124-4174-a200-0d79087116dc" />
